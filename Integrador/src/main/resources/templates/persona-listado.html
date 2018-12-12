@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Persona</title>
+</head>
+<body>
+	<h1>Listado de Personas</h1>
+
+
+	<a th:href="@{/persona/inicio}">Crear Persona</a>
+
+
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Nombre</th>
+			<th>Apellido</th>
+                        <th>dni</th>
+			<th>Acciones</th>
+			
+		</tr>
+		<tr th:each="persona : ${persona}">
+			<td th:text="${persona.persona_id}"></td>
+			<td th:text="${persona.nombre}"></td>
+			<td th:text="${persona.apellido}"></td>
+                        <td th:text="${persona.dni}"></td>
+			<td>
+				<a th:href="@{/persona/inicio(persona_id=__${persona.persona_id}__)}">Ver</a>
+				<span>   -    </span>
+				<a th:href="@{/cancha/eliminar(persona_id=__${persona.persona_id}__)}">Eliminar</a>
+				
+			</td>
+		</tr>
+	</table>
+
+</body>
+</html>

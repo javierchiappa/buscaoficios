@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Canchas</title>
+</head>
+<body>
+	<h1>Listado de Canchas</h1>
+
+
+	<a th:href="@{/cancha/inicio}">Crear Cancha</a>
+
+
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Ciudad</th>
+			<th>Nombre</th>
+			<th>Acciones</th>
+			
+		</tr>
+		<tr th:each="cancha : ${canchas}">
+			<td th:text="${cancha.idCancha}"></td>
+			<td th:text="${cancha.ciudad}"></td>
+			<td th:text="${cancha.nombre}"></td>
+			<td>
+				<a th:href="@{/cancha/inicio(idCancha=__${cancha.idCancha}__)}">Ver</a>
+				<span>   -    </span>
+				<a th:href="@{/cancha/eliminar(idCancha=__${cancha.idCancha}__)}">Eliminar</a>
+				
+			</td>
+		</tr>
+	</table>
+
+</body>
+</html>
